@@ -1,0 +1,26 @@
+<% if session[:win] == "false"%>
+    <h1>Please enter a number between 1 to 100</h1>
+
+    <p>You have <%= session[:tries] %> guesses left</p>
+
+<%end%>
+  
+     <p><%= @message %></p>
+
+<% if session[:win] == "true"%>
+   <p>Do you want to play again?<a href="/reset" >Play Again</a></p>
+<%end%>
+
+<% if session[:win] == "false"%>
+    <form method="post" action="/home">
+        <input type='text' name='guess' />
+        <input type='submit' value='Guess Now!' />
+    </form>
+
+    <ul>
+      <% session[:guesses].each do |number| %>
+        <li><%= number %></li>
+      <% end %>
+    <ul>
+<%end%>
+
